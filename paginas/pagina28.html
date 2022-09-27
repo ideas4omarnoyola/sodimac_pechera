@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 28</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina28/texto.png" data-posX="0" data-posY="0"/>
+
+    <!-- Simulador 1 -->
+    <img class="elementos sims" id="sim1" src="../img/pagina28/sim1.png" data-posX="0" data-posY="0"/>
+    <div class="elementos zonas" id="zona1_1" data-posX="472" data-posY="274"></div>
+    <div class="elementos zonas" id="zona1_2" data-posX="634" data-posY="466"></div>
+    <img class="elementos" id="paloma1_1" src="../img/pagina28/paloma.png" data-posX="525" data-posY="274"/>
+    <img class="elementos" id="paloma1_2" src="../img/pagina28/paloma.png" data-posX="645" data-posY="466"/>
+    <img class="elementos" id="tache1_1" src="../img/pagina28/tache.png" data-posX="525" data-posY="274"/>
+    <img class="elementos" id="tache1_2" src="../img/pagina28/tache.png" data-posX="645" data-posY="466"/>
+
+    <!-- Simulador 2 -->
+    <img class="elementos sims" id="sim2" src="../img/pagina28/sim2.png" data-posX="0" data-posY="0"/>
+    <div class="elementos zonas" id="zona2_1" data-posX="594" data-posY="213"></div>
+    <div class="elementos zonas" id="zona2_2" data-posX="594" data-posY="254"></div>
+    <div class="elementos zonas" id="zona2_3" data-posX="476" data-posY="431"></div>
+    <img class="elementos" id="paloma2_1" src="../img/pagina28/paloma.png" data-posX="670" data-posY="213"/>
+    <img class="elementos" id="paloma2_2" src="../img/pagina28/paloma.png" data-posX="670" data-posY="254"/>
+    <img class="elementos" id="paloma2_3" src="../img/pagina28/paloma.png" data-posX="670" data-posY="431"/>
+    <img class="elementos" id="tache2_1" src="../img/pagina28/tache.png" data-posX="670" data-posY="213"/>
+    <img class="elementos" id="tache2_2" src="../img/pagina28/tache.png" data-posX="670" data-posY="254"/>
+    <img class="elementos" id="tache2_3" src="../img/pagina28/tache.png" data-posX="670" data-posY="431"/>
+
+    <!-- Simulador 3 -->
+    <img class="elementos sims" id="sim3" src="../img/pagina28/sim3.png" data-posX="0" data-posY="0"/>
+    <div class="elementos zonas" id="zona3_1" data-posX="476" data-posY="274"></div>
+    <div class="elementos zonas" id="zona3_2" data-posX="476" data-posY="326"></div>
+    <div class="elementos zonas" id="zona3_3" data-posX="476" data-posY="382"></div>
+    <div class="elementos zonas" id="zona3_4" data-posX="476" data-posY="471"></div>
+    <img class="elementos" id="paloma3_1" src="../img/pagina28/paloma.png" data-posX="676" data-posY="274"/>
+    <img class="elementos" id="paloma3_2" src="../img/pagina28/paloma.png" data-posX="676" data-posY="326"/>
+    <img class="elementos" id="paloma3_3" src="../img/pagina28/paloma.png" data-posX="676" data-posY="382"/>
+    <img class="elementos" id="paloma3_4" src="../img/pagina28/paloma.png" data-posX="676" data-posY="471"/>
+    <img class="elementos" id="tache3_1" src="../img/pagina28/tache.png" data-posX="676" data-posY="274"/>
+    <img class="elementos" id="tache3_2" src="../img/pagina28/tache.png" data-posX="676" data-posY="326"/>
+    <img class="elementos" id="tache3_3" src="../img/pagina28/tache.png" data-posX="676" data-posY="382"/>
+    <img class="elementos" id="tache3_4" src="../img/pagina28/tache.png" data-posX="676" data-posY="471"/>
+
+    <!-- Simulador 4 -->
+    <img class="elementos sims" id="sim4" src="../img/pagina28/sim4.png" data-posX="0" data-posY="0"/>
+    <div class="elementos zonas" id="zona4_1" data-posX="493" data-posY="257"></div>
+    <img class="elementos" id="paloma4_1" src="../img/pagina28/paloma.png" data-posX="695" data-posY="257"/>
+    <img class="elementos" id="tache4_1" src="../img/pagina28/tache.png" data-posX="695" data-posY="257"/>
+
+    <img class="elementos sims" id="retroBuena" src="../img/pagina28/retroBuena.png" data-posX="0" data-posY="0"/>
+    <img class="elementos sims" id="retroMala" src="../img/pagina28/retroMala.png" data-posX="0" data-posY="0"/>
+    <img class="elementos sims" id="reintentar" src="../img/pagina28/reintentar.png" data-posX="514" data-posY="433"/>
+    <div class="elementos" id="calificacion"></div>
+
+    
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+
+        const zonas = $('.zonas');
+        zonas.css({
+            'cursor': 'pointer',
+            'background': '#30AB0280'
+        });
+        const sims = $('.sims');
+        sims.css('cursor', 'pointer');
+        
+        const sim1 = $('#sim1');
+        const paloma1_1 = $('#paloma1_1');
+        const paloma1_2 = $('#paloma1_2');
+        const tache1_1 = $('#tache1_1');
+        const tache1_2 = $('#tache1_2');
+        const zona1_1 = $('#zona1_1');
+        const zona1_2 = $('#zona1_2');
+        zona1_1.css({'width': '201px', 'height': '38px'});
+        zona1_2.css({'width': '41px', 'height': '38px'});
+        
+        const sim2 = $('#sim2');
+        const paloma2_1 = $('#paloma2_1');
+        const paloma2_2 = $('#paloma2_2');
+        const paloma2_3 = $('#paloma2_3');
+        const tache2_1 = $('#tache2_1');
+        const tache2_2 = $('#tache2_2');
+        const zona2_1 = $('#zona2_1');
+        const zona2_2 = $('#zona2_2');
+        const zona2_3 = $('#zona2_3');
+        zona2_1.css({'width': '79px', 'height': '40px'});
+        zona2_2.css({'width': '79px', 'height': '40px'});
+        zona2_3.css({'width': '193px', 'height': '40px'});
+        
+        const sim3 = $('#sim3');
+        const paloma3_1 = $('#paloma3_1');
+        const paloma3_2 = $('#paloma3_2');
+        const paloma3_3 = $('#paloma3_3');
+        const paloma3_4 = $('#paloma3_4');
+        const tache3_1 = $('#tache3_1');
+        const tache3_2 = $('#tache3_2');
+        const tache3_3 = $('#tache3_3');
+        const tache3_4 = $('#tache3_4');
+        const zona3_1 = $('#zona3_1');
+        const zona3_2 = $('#zona3_2');
+        const zona3_3 = $('#zona3_3');
+        const zona3_4 = $('#zona3_4');
+        zona3_1.css({'width': '191px', 'height': '29px'});
+        zona3_2.css({'width': '191px', 'height': '29px'});
+        zona3_3.css({'width': '191px', 'height': '29px'});
+        zona3_4.css({'width': '191px', 'height': '35px'});
+
+        const sim4 = $('#sim4');
+        const paloma4_1 = $('#paloma4_1');
+        const tache4_1 = $('#tache4_1');
+        const zona4_1 = $('#zona4_1');
+        zona4_1.css({'width': '164px', 'height': '72px'});
+
+        const retroBuena = $('#retroBuena');
+        const retroMala = $('#retroMala');
+        const calificacion = $('#calificacion');
+        const reintentar = $('#reintentar');
+
+        let zonaPantalla1 = 1;
+        let zonaPantalla2 = 1;
+        let zonaPantalla3 = 1;
+
+        // Variables de Evaluación
+        let aciertos = 0;
+        const totalPreguntas = 10;
+
+        // Audios------------------------------------------------------
+        const audio = [    
+            new Audio('../audios/s_bien.mp3'),    
+            new Audio('../audios/s_mal.mp3'),    
+            new Audio('../audios/Audio0.mp3'),    
+            new Audio('../audios/Audio0.mp3')    
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            simulacion1();
+            animacionEntrada(texto, 'izquierda-derecha', 1, 1);
+        }
+
+        // Simulacion 1-------------------------------------------------
+
+        function simulacion1(){
+            animacionEntrada(sim1, 'default', 1, 3);
+            animacionEntrada(zona1_1, 'default', 1, 3);
+        }
+        
+
+        sim1.click(function(){
+            audio[1].play();
+
+            if(zonaPantalla1 == 1){
+                animacionEntrada(tache1_1, 'default', 1);
+                animacionSalida(zona1_1, 'default', 1);
+                animacionEntrada(zona1_2, 'default', 1);
+            }
+            if(zonaPantalla1 == 2){
+                animacionEntrada(tache1_2, 'default', 1);
+                animacionSalida(zona1_2, 'default', 1);
+                salidaSim1();
+            }
+
+            zonaPantalla1++;
+        });
+
+        zona1_1.click(function(){
+            audio[0].play();
+            animacionSalida(zona1_1, 'default', .1);
+            zonaPantalla1++;
+            aciertos++;
+            animacionEntrada(paloma1_1, 'default', 1);
+            animacionEntrada(zona1_2, 'default', 1);
+        });
+
+        zona1_2.click(function(){
+            audio[0].play();
+            animacionSalida(zona1_2, 'default', .1);
+            zonaPantalla1++;
+            aciertos++;
+            animacionEntrada(paloma1_2, 'default', 1);
+            salidaSim1();
+        });
+
+        
+
+        function salidaSim1(){
+            animacionSalida(sim1, 'default', 1, 3);
+            animacionSalida(paloma1_1, 'default', 1, 3);
+            animacionSalida(paloma1_2, 'default', 1, 3);
+            animacionSalida(tache1_1, 'default', 1, 3);
+            animacionSalida(tache1_2, 'default', 1, 3);
+            simulacion2();
+        }
+
+        // Simulacion 2-------------------------------------------------
+
+        function simulacion2(){
+            animacionEntrada(sim2, 'default', 1, 3);
+            animacionEntrada(zona2_1, 'default', 1, 3);
+        }
+        
+
+        sim2.click(function(){
+            audio[1].play();
+
+            if(zonaPantalla2 == 1){
+                animacionEntrada(tache2_1, 'default', 1);
+                animacionSalida(zona2_1, 'default', 1);
+                animacionEntrada(zona2_2, 'default', 1);
+            }
+            if(zonaPantalla2 == 2){
+                animacionEntrada(tache2_2, 'default', 1);
+                animacionSalida(zona2_2, 'default', 1);
+                animacionEntrada(zona2_3, 'default', 1);
+            }
+            if(zonaPantalla2 == 3){
+                animacionSalida(zona2_3, 'default', 1);
+                animacionEntrada(tache2_3, 'default', 1);
+                salidaSim2();
+            }
+
+            zonaPantalla2++;
+        });
+
+        zona2_1.click(function(){
+            audio[0].play();
+            animacionSalida(zona2_1, 'default', .1);
+            zonaPantalla2++;
+            aciertos++;
+            animacionEntrada(paloma2_1, 'default', 1);
+            animacionEntrada(zona2_2, 'default', 1);
+        });
+
+        zona2_2.click(function(){
+            audio[0].play();
+            animacionSalida(zona2_2, 'default', .1);
+            zonaPantalla2++;
+            aciertos++;
+            animacionEntrada(paloma2_2, 'default', 1);
+            animacionEntrada(zona2_3, 'default', 1);
+        });
+
+        zona2_3.click(function(){
+            audio[0].play();
+            animacionSalida(zona2_3, 'default', .1);
+            zonaPantalla2++;
+            aciertos++;
+            animacionEntrada(paloma2_3, 'default', 1);
+            salidaSim2();
+        });
+
+        function salidaSim2(){
+            animacionSalida(sim2, 'default', 1, 3);
+            animacionSalida(paloma2_1, 'default', 1, 3);
+            animacionSalida(paloma2_2, 'default', 1, 3);
+            animacionSalida(paloma2_3, 'default', 1, 3);
+            animacionSalida(tache2_1, 'default', 1, 3);
+            animacionSalida(tache2_2, 'default', 1, 3);
+            animacionSalida(tache2_3, 'default', 1, 3);
+            simulacion3();
+        }
+
+        // Simulacion 3-------------------------------------------------
+
+        function simulacion3(){
+            animacionEntrada(sim3, 'default', 1, 3);
+            animacionEntrada(zona3_1, 'default', 1, 3);
+        }
+        
+
+        sim3.click(function(){
+            audio[1].play();
+
+            if(zonaPantalla3 == 1){
+                animacionEntrada(tache3_1, 'default', 1);
+                animacionSalida(zona3_1, 'default', 1);
+                animacionEntrada(zona3_2, 'default', 1);
+            }
+            if(zonaPantalla3 == 2){
+                animacionEntrada(tache3_2, 'default', 1);
+                animacionSalida(zona3_2, 'default', 1);
+                animacionEntrada(zona3_3, 'default', 1);
+            }
+            if(zonaPantalla3 == 3){
+                animacionEntrada(tache3_3, 'default', 1);
+                animacionSalida(zona3_3, 'default', 1);
+                animacionEntrada(zona3_4, 'default', 1);
+            }
+            if(zonaPantalla3 == 4){
+                animacionSalida(zona3_4, 'default', 1);
+                animacionEntrada(tache3_4, 'default', 1);
+                salidaSim3();
+            }
+
+            zonaPantalla3++;
+        });
+
+        zona3_1.click(function(){
+            audio[0].play();
+            animacionSalida(zona3_1, 'default', .1);
+            zonaPantalla3++;
+            aciertos++;
+            animacionEntrada(paloma3_1, 'default', 1);
+            animacionEntrada(zona3_2, 'default', 1);
+        });
+
+        zona3_2.click(function(){
+            audio[0].play();
+            animacionSalida(zona3_2, 'default', .1);
+            zonaPantalla3++;
+            aciertos++;
+            animacionEntrada(paloma3_2, 'default', 1);
+            animacionEntrada(zona3_3, 'default', 1);
+        });
+
+        zona3_3.click(function(){
+            audio[0].play();
+            animacionSalida(zona3_3, 'default', .1);
+            zonaPantalla3++;
+            aciertos++;
+            animacionEntrada(paloma3_3, 'default', 1);
+            animacionEntrada(zona3_4, 'default', 1);
+        });
+
+        zona3_4.click(function(){
+            audio[0].play();
+            animacionSalida(zona3_4, 'default', .1);
+            zonaPantalla3++;
+            aciertos++;
+            animacionEntrada(paloma3_4, 'default', 1);
+            salidaSim3();
+        });
+
+        function salidaSim3(){
+            animacionSalida(sim3, 'default', 1, 3);
+            animacionSalida(paloma3_1, 'default', 1, 3);
+            animacionSalida(paloma3_2, 'default', 1, 3);
+            animacionSalida(paloma3_3, 'default', 1, 3);
+            animacionSalida(paloma3_4, 'default', 1, 3);
+            animacionSalida(tache3_1, 'default', 1, 3);
+            animacionSalida(tache3_2, 'default', 1, 3);
+            animacionSalida(tache3_3, 'default', 1, 3);
+            animacionSalida(tache3_4, 'default', 1, 3);
+            simulacion4();
+        }
+
+        // Simulacion 4------------------------------------------------------
+        function simulacion4(){
+            animacionEntrada(sim4, 'default', 1, 3);
+            animacionEntrada(zona4_1, 'default', 1, 3);
+        }
+
+        sim4.click(function(){
+            audio[1].play();
+            animacionEntrada(tache4_1, 'default', 1);
+            salidaSim4();
+        });
+
+        zona4_1.click(function(){
+            animacionEntrada(paloma4_1, 'default', 1);
+            audio[0].play();
+            aciertos++;
+            salidaSim4();
+        });
+
+        function salidaSim4(){
+            animacionSalida(sim4, 'default', 1, 3);
+            animacionSalida(zona4_1, 'default', 1, .1);
+            animacionSalida(paloma4_1, 'default', 1, 3);
+            animacionSalida(tache4_1, 'default', 3);
+            retroEvaluacion();
+        }
+
+        // Retroalimentacion---------------------------------------------------
+        function retroEvaluacion(){
+            const promedio = aciertos * 10;
+
+            const intentos = aplicacion.verIntento();
+
+            if(promedio >= 80 && intentos <= 2){
+                retroA(promedio);
+            }
+            else{
+                aplicacion.siguienteIntento();
+                retroB(promedio);
+            }
+            
+            aplicacion.guardarCalificacion(promedio);
+        }
+
+        function retroA(promedio){
+            
+            calificacion.html(promedio);
+
+            calificacion.css({
+                'fontSize': '32px',
+                'color': '#58595B', 
+                'top': '307px',
+                'left': '538px'
+            });
+
+            aplicacion.reproducirAudio(audio[2], avanzar, 1);
+            animacionEntrada(retroBuena, 'default', 1, 1);
+            animacionEntrada(calificacion, 'default', 1, 1);
+        }
+
+        function retroB(promedio){
+            
+            calificacion.html(promedio);
+
+            calificacion.css({
+                'fontSize': '32px',
+                'color': '#58595B', 
+                'top': '249px',
+                'left': '573px'
+            });
+
+            aplicacion.reproducirAudio(audio[3], parpadeo, 1);
+            animacionEntrada(retroMala, 'default', 1, 1);
+            animacionEntrada(calificacion, 'default', 1, 1);
+        }
+
+        function avanzar(){
+            setTimeout(()=>{
+                aplicacion.siguientePagina();
+            }, 2000);
+        }
+
+        function parpadeo(){
+            parpadear(reintentar);
+        }
+
+        reintentar.click(function(){
+            aplicacion.recargarPagina();
+        });
+
+    </script>
+</body>
+</html>

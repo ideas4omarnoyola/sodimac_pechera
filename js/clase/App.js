@@ -111,7 +111,7 @@ function activarBotonAdelante(){
     btnAdelante.removeClass('desactivado');
     btnAdelante.addClass('activado');
     setTimeout(()=>{
-        parpadear(btnAdelante, .3);
+        parpadear(btnAdelante, .6);
     }, 300);
 }
 

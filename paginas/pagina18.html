@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 18</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina18/texto.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro1" src="../img/pagina18/cuadro1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro2" src="../img/pagina18/cuadro2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro3" src="../img/pagina18/cuadro3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel1" src="../img/pagina18/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel2" src="../img/pagina18/tel2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel3" src="../img/pagina18/tel3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos areasClick" id="area1" src="../img/pagina18/area1.png" data-posX="356" data-posY="444"/>
+    <img class="elementos areasClick" id="area2" src="../img/pagina18/area2.png" data-posX="631" data-posY="215"/>
+    <img class="elementos areasClick" id="area3" src="../img/pagina18/area3.png" data-posX="489" data-posY="210"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+        const cuadro1 = $('#cuadro1');
+        const cuadro2 = $('#cuadro2');
+        const cuadro3 = $('#cuadro3');
+        const area1 = $('#area1');
+        const area2 = $('#area2');
+        const area3 = $('#area3');
+        const tel1 = $('#tel1');
+        const tel2 = $('#tel2');
+        const tel3 = $('#tel3');
+        const areasClick = $('.areasClick');
+
+        const cuadros = [
+            cuadro1,
+            cuadro2,
+            cuadro3
+        ]
+        const telefonos = [
+            tel1,
+            tel2,
+            tel3
+        ]
+        const areas = [
+            area1,
+            area2,
+            area3
+        ]
+
+        areasClick.css('cursor', 'pointer');
+
+        let noSlide = 0;
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3')
+        ]
+
+        const audiosSlides = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3')
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], actividad, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1)
+        }
+
+        function actividad(){
+            verInfo(noSlide);
+        }
+
+        function verInfo(noInfo){
+            animacionEntrada(telefonos[noInfo], 'default', 1);
+            animacionEntrada(areas[noInfo], 'default', 1);
+
+            areas[noInfo].click(function(){
+                aplicacion.reproducirAudio(audiosSlides[noInfo], siguiente, 1);
+                animacionEntrada(cuadros[noInfo], 'default', 1);
+            });
+        }
+
+        function siguiente(){
+            
+            if(noSlide == 1){
+                animacionSalida(telefonos[noSlide - 1], 'default', 1);
+                animacionSalida(areas[noSlide - 1], 'default', 1);
+                animacionSalida(cuadros[noSlide - 1], 'default', 1);
+                animacionSalida(telefonos[noSlide], 'default', 1);
+                animacionSalida(areas[noSlide], 'default', 1);
+                animacionSalida(cuadros[noSlide], 'default', 1);
+            }
+
+            noSlide++;
+
+            if(noSlide < areas.length){
+                verInfo(noSlide);
+            }
+
+            if(noSlide == areas.length){
+                aplicacion.terminaPantalla();
+            }
+        }
+
+    </script>
+</body>
+</html>

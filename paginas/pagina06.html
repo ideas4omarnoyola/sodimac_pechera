@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 06</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina06/texto.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro1" src="../img/pagina06/cuadro1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro2" src="../img/pagina06/cuadro2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro3" src="../img/pagina06/cuadro3.png" data-posX="0" data-posY="0"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+        const cuadro1 = $('#cuadro1');
+        const cuadro2 = $('#cuadro2');
+        const cuadro3 = $('#cuadro3');
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/audio0.mp3') 
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], info1, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1)
+        }
+
+        function info1(){
+            aplicacion.reproducirAudio(audio[1], info2, 1);
+            animacionEntrada(cuadro1, 'derecha-izquierda', 1)
+        }
+
+        function info2(){
+            aplicacion.reproducirAudio(audio[2], info3, 1);
+            animacionEntrada(cuadro2, 'izquierda-derecha', 1)
+        }
+
+        function info3(){
+            aplicacion.reproducirAudio(audio[3], final, 1);
+            animacionEntrada(cuadro3, 'derecha-izquierda', 1)
+        }
+        
+        function final(){
+            aplicacion.terminaPantalla();
+        }
+
+    </script>
+</body>
+</html>

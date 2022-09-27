@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 05</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina05/texto.png" data-posX="0" data-posY="0"/>
+    
+    <img class="elementos" id="info1" src="../img/pagina05/info1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="info2" src="../img/pagina05/info2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="info3" src="../img/pagina05/info3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="info4" src="../img/pagina05/info4.png" data-posX="0" data-posY="0"/>
+
+    <img class="elementos" id="uno" src="../img/pagina05/uno.png" data-posX="288" data-posY="242"/>
+    <img class="elementos" id="dos" src="../img/pagina05/dos.png" data-posX="618" data-posY="242"/>
+    <img class="elementos" id="tres" src="../img/pagina05/tres.png" data-posX="288" data-posY="437"/>
+    <img class="elementos" id="cuatro" src="../img/pagina05/cuatro.png" data-posX="618" data-posY="437"/>
+
+    <img class="elementos" id="botonPop" src="../img/pagina05/dos.png" data-posX="618" data-posY="242"/>
+    <img class="elementos" id="popUp" src="../img/pagina05/pop.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cerrarPop" src="../img/pagina05/cerrarPop.png" data-posX="870" data-posY="118"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+        const uno = $('#uno');
+        const dos = $('#dos');
+        const tres = $('#tres');
+        const cuatro = $('#cuatro');
+        const info1 = $('#info1');
+        const info2 = $('#info2');
+        const info3 = $('#info3');
+        const info4 = $('#info4');
+        const botonPop = $('#botonPop');
+        const popUp = $('#popUp');
+        const cerrarPop = $('#cerrarPop');
+
+        let noInfo = 0;
+        let totalInfo = 4;
+
+        const cards = [
+            uno, dos, tres, cuatro
+        ];
+        
+        const info = [
+            info1, info2, info3, info4
+        ];
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/audio0.mp3'),  
+        ]
+
+        const audioBoton = [
+            new Audio('../audios/audio0.mp3'),    
+            new Audio('../audios/audio0.mp3'),    
+            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/audio0.mp3'),  
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], actividad, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1, 1);
+            animacionEntrada(uno, 'abajo-arriba', 1, 2);
+            animacionEntrada(dos, 'abajo-arriba', 1, 2.5);
+            animacionEntrada(tres, 'abajo-arriba', 1, 3);
+            animacionEntrada(cuatro, 'abajo-arriba', 1, 3.5);
+        }
+
+        function actividad(){
+            verInfo(noInfo);
+        }
+
+        function verInfo(numero){
+            parpadear(cards[numero]);
+
+            cards[numero].click(function(){
+                if(cards[numero].css('cursor') == 'pointer'){
+                    aplicacion.reproducirAudio(audioBoton[numero], siguienteInfo, 1);
+                    dejarParpadear(cards[numero]);
+                    animacionEntrada(info[numero], 'default', 1);
+                }
+            });
+        }
+
+        function siguienteInfo(){
+            noInfo++;
+
+            if(noInfo < totalInfo){
+                verInfo(noInfo);
+            }
+            else{
+                animacionSalida(dos, 'default', 1);
+                parpadear(botonPop);
+            }
+        }
+
+        botonPop.click(()=>{
+            if(botonPop.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[1], cerrar, 1);
+                dejarParpadear(botonPop);
+                animacionEntrada(popUp, 'default', 1);
+            }
+        });
+
+        function cerrar(){
+            parpadear(cerrarPop);
+        }
+
+        cerrarPop.click(()=>{
+            if(cerrarPop.css('cursor') == 'pointer'){
+                dejarParpadear(cerrarPop);
+                animacionSalida(popUp, 'default', 1);
+                animacionSalida(cerrarPop, 'default', 1);
+                aplicacion.terminaPantalla();
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 09</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina09/texto.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="instruccion" src="../img/pagina09/instruccion.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mensaje" src="../img/pagina09/mensaje.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro1" src="../img/pagina09/cuadro1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro2" src="../img/pagina09/cuadro2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro3" src="../img/pagina09/cuadro3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro4" src="../img/pagina09/cuadro4.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro5" src="../img/pagina09/cuadro5.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel1" src="../img/pagina09/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel2" src="../img/pagina09/tel2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel3" src="../img/pagina09/tel3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel4" src="../img/pagina09/tel4.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel5" src="../img/pagina09/tel5.png" data-posX="0" data-posY="0"/>
+    <img class="elementos areasClick" id="area1" src="../img/pagina09/area1.png" data-posX="390" data-posY="277"/>
+    <img class="elementos areasClick" id="area2" src="../img/pagina09/area2.png" data-posX="390" data-posY="277"/>
+    <img class="elementos areasClick" id="area3" src="../img/pagina09/area3.png" data-posX="390" data-posY="300"/>
+    <img class="elementos areasClick" id="area4" src="../img/pagina09/area4.png" data-posX="458" data-posY="278"/>
+    <img class="elementos areasClick" id="area5" src="../img/pagina09/area5.png" data-posX="390" data-posY="308"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+        const instruccion = $('#instruccion');
+        const cuadro1 = $('#cuadro1');
+        const cuadro2 = $('#cuadro2');
+        const cuadro3 = $('#cuadro3');
+        const cuadro4 = $('#cuadro4');
+        const cuadro5 = $('#cuadro5');
+        const area1 = $('#area1');
+        const area2 = $('#area2');
+        const area3 = $('#area3');
+        const area4 = $('#area4');
+        const area5 = $('#area5');
+        const tel1 = $('#tel1');
+        const tel2 = $('#tel2');
+        const tel3 = $('#tel3');
+        const tel4 = $('#tel4');
+        const tel5 = $('#tel5');
+        const tels = $('#tels');
+        const mensaje = $('#mensaje');
+        const areasClick = $('.areasClick');
+
+        const cuadros = [
+            cuadro1,
+            cuadro2,
+            cuadro3,
+            cuadro4,
+            cuadro5
+        ]
+        const telefonos = [
+            tel1,
+            tel2,
+            tel3,
+            tel4,
+            tel5,
+        ]
+        const areas = [
+            area1,
+            area2,
+            area3,
+            area4,
+            area5
+        ]
+
+        areasClick.css('cursor', 'pointer');
+
+        let noSlide = 0;
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+        ]
+
+        const audiosSlides = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], verInstruccion, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1)
+        }
+
+        function verInstruccion(){
+            aplicacion.reproducirAudio(audio[1], actividad, 1);
+            animacionEntrada(instruccion, 'abajo-arriba', 1);
+        }
+
+        function actividad(){
+            verInfo(noSlide);
+        }
+
+        function verInfo(noInfo){
+            animacionEntrada(telefonos[noInfo], 'default', 1);
+            animacionEntrada(areas[noInfo], 'default', 1);
+
+            areas[noInfo].click(function(){
+                aplicacion.reproducirAudio(audiosSlides[noInfo], siguiente, 1);
+                animacionEntrada(cuadros[noInfo], 'default', 1);
+            });
+        }
+
+        function siguiente(){
+            animacionSalida(telefonos[noSlide], 'default', 1);
+            animacionSalida(areas[noSlide], 'default', 1);
+            animacionSalida(cuadros[noSlide], 'default', 1);
+
+            noSlide++;
+
+            if(noSlide < 5){
+                verInfo(noSlide);
+            }
+
+            if(noSlide == 5){
+                mensajeFinal();
+            }
+        }
+
+        function mensajeFinal(){
+            aplicacion.reproducirAudio(audio[2], final, 1);
+            animacionEntrada(mensaje, 'default', 1)
+        }
+
+        function final(){
+            aplicacion.terminaPantalla();
+        }
+
+    </script>
+</body>
+</html>

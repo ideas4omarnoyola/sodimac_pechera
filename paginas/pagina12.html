@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 12</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto1" src="../img/pagina12/texto1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="texto2" src="../img/pagina12/texto2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="instruccion" src="../img/pagina12/instruccion.png" data-posX="0" data-posY="0"/>
+    
+    <img class="elementos" id="tel1" src="../img/pagina12/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel2" src="../img/pagina12/tel2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel3" src="../img/pagina12/tel3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel4" src="../img/pagina12/tel4.png" data-posX="0" data-posY="0"/>
+
+    <img class="elementos" id="cuadro1" src="../img/pagina12/cuadro1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro2" src="../img/pagina12/cuadro2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro3" src="../img/pagina12/cuadro3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro4" src="../img/pagina12/cuadro4.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro5" src="../img/pagina12/cuadro5.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro6" src="../img/pagina12/cuadro6.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro7" src="../img/pagina12/cuadro7.png" data-posX="0" data-posY="0"/>
+
+    <img class="elementos areas" id="area1" src="../img/pagina12/area1.png" data-posX="333" data-posY="278"/>
+    <img class="elementos areas" id="area2" src="../img/pagina12/area2.png" data-posX="499" data-posY="479"/>
+    <img class="elementos areas" id="area3" src="../img/pagina12/area3.png" data-posX="670" data-posY="212"/>
+    <img class="elementos areas" id="area4" src="../img/pagina12/area4.png" data-posX="670" data-posY="438"/>
+    <img class="elementos areas" id="area5" src="../img/pagina12/area5.png" data-posX="359" data-posY="219"/>
+    <img class="elementos areas" id="area6" src="../img/pagina12/area6.png" data-posX="356" data-posY="478"/>
+    <img class="elementos areas" id="area7" src="../img/pagina12/area7.png" data-posX="631" data-posY="261"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto1');
+        const instruccion = $('#instruccion');
+        const texto2 = $('#texto2');
+        const tel1 = $('#tel1');
+        const tel2 = $('#tel2');
+        const tel3 = $('#tel3');
+        const tel4 = $('#tel4');
+        const area1 = $('#area1');
+        const area2 = $('#area2');
+        const area3 = $('#area3');
+        const area4 = $('#area4');
+        const area5 = $('#area5');
+        const area6 = $('#area6');
+        const area7 = $('#area7');
+        const cuadro1 = $('#cuadro1');
+        const cuadro2 = $('#cuadro2');
+        const cuadro3 = $('#cuadro3');
+        const cuadro4 = $('#cuadro4');
+        const cuadro5 = $('#cuadro5');
+        const cuadro6 = $('#cuadro6');
+        const cuadro7 = $('#cuadro7');
+        
+        const areas = $('.areas');
+
+        areas.css('cursor', 'pointer');
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], instruccion1, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1);
+        }
+
+        function instruccion1(){
+            aplicacion.reproducirAudio(audio[1], seleccionar1, 1);
+            animacionEntrada(instruccion, 'arriba-abajo', 1);
+        }
+
+        function seleccionar1(){
+            animacionEntrada(tel1, 'default', 1);
+            animacionEntrada(area1, 'default', 1);
+        }
+
+        function seleccionar2(){
+            animacionEntrada(area2, 'default', 1);
+        }
+
+        function seleccionar3(){
+            animacionEntrada(tel2, 'default', 1);
+            animacionEntrada(area3, 'default', 1);
+        }
+
+        function seleccionar4(){
+            animacionEntrada(area4, 'default', 1);
+        }
+
+        function seleccionar5(){
+            animacionEntrada(tel3, 'default', 1);
+            animacionEntrada(area5, 'default', 1);
+        }
+
+        function seleccionar6(){
+            animacionEntrada(area6, 'default', 1);
+        }
+
+        function seleccionar7(){
+            animacionEntrada(tel4, 'default', 1);
+            animacionEntrada(area7, 'default', 1);
+        }
+
+        area1.click(function(){
+            if(area1.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[2], seleccionar2, 1);
+                area1.css('cursor', 'default');
+                animacionEntrada(cuadro1, 'default', 1);
+            }
+        });
+
+        area2.click(function(){
+            if(area2.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[3], seleccionar3, 1);
+                area2.css('cursor', 'default');
+                animacionEntrada(cuadro2, 'default', 1);
+            }
+        });
+
+        area3.click(function(){
+            if(area3.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[4], seleccionar4, 1);
+                area3.css('cursor', 'default');
+                animacionEntrada(cuadro3, 'default', 1);
+            }
+        });
+
+        area4.click(function(){
+            if(area4.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[5], salidaTelefonos, 1);
+                area4.css('cursor', 'default');
+                animacionEntrada(cuadro4, 'default', 1);
+            }
+        });
+
+        function salidaTelefonos(){
+            aplicacion.reproducirAudio(audio[6], seleccionar5, 1);
+            animacionSalida(instruccion, 'default', 1);
+            animacionSalida(tel1, 'default', 1);
+            animacionSalida(tel2, 'default', 1);
+            animacionSalida(cuadro1, 'default', 1);
+            animacionSalida(cuadro2, 'default', 1);
+            animacionSalida(cuadro3, 'default', 1);
+            animacionSalida(cuadro4, 'default', 1);
+            animacionSalida(area1, 'default', 1);
+            animacionSalida(area2, 'default', 1);
+            animacionSalida(area3, 'default', 1);
+            animacionSalida(area4, 'default', 1);
+            animacionEntrada(texto2, 'default', 1);
+        }
+
+        area5.click(function(){
+            if(area5.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[7], seleccionar6, 1);
+                area5.css('cursor', 'default');
+                animacionEntrada(cuadro5, 'default', 1);
+            }
+        });
+
+        area6.click(function(){
+            if(area6.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[8], seleccionar7, 1);
+                area6.css('cursor', 'default');
+                animacionEntrada(cuadro6, 'default', 1);
+            }
+        });
+
+        area7.click(function(){
+            if(area7.css('cursor') == 'pointer'){
+                aplicacion.reproducirAudio(audio[9], final, 1);
+                area7.css('cursor', 'default');
+                animacionEntrada(cuadro7, 'default', 1);
+            }
+        });
+        
+        function final(){
+            aplicacion.terminaPantalla();
+        }
+
+    </script>
+</body>
+</html>

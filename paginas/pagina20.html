@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 20</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina20/texto.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="instruccion" src="../img/pagina20/instruccion.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro1" src="../img/pagina20/cuadro1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro2" src="../img/pagina20/cuadro2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro3" src="../img/pagina20/cuadro3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro4" src="../img/pagina20/cuadro4.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel1" src="../img/pagina20/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos areasClick" id="area1" src="../img/pagina20/area1.png" data-posX="474" data-posY="210"/>
+    <img class="elementos areasClick" id="area2" src="../img/pagina20/area2.png" data-posX="474" data-posY="276"/>
+    <img class="elementos areasClick" id="area3" src="../img/pagina20/area3.png" data-posX="474" data-posY="397"/>
+    <img class="elementos areasClick" id="area4" src="../img/pagina20/area4.png" data-posX="474" data-posY="480"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+        const instruccion = $('#instruccion');
+        const cuadro1 = $('#cuadro1');
+        const cuadro2 = $('#cuadro2');
+        const cuadro3 = $('#cuadro3');
+        const cuadro4 = $('#cuadro4');
+        const area1 = $('#area1');
+        const area2 = $('#area2');
+        const area3 = $('#area3');
+        const area4 = $('#area4');
+        const tel1 = $('#tel1');
+        const areasClick = $('.areasClick');
+
+        const cuadros = [
+            cuadro1,
+            cuadro2,
+            cuadro3,
+            cuadro4
+        ]
+
+        const areas = [
+            area1,
+            area2,
+            area3,
+            area4
+        ]
+
+        areasClick.css('cursor', 'pointer');
+
+        let noSlide = 0;
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3'),
+        ]
+
+        const audiosSlides = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], verInstruccion, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1);
+        }
+
+        function verInstruccion(){
+            animacionEntrada(instruccion, 'abajo-arriba', 1);
+            actividad();
+        }
+
+        function actividad(){
+            animacionEntrada(tel1, 'default', 1);
+            activarArea(noSlide);
+        }
+
+        function activarArea(noInfo){
+            animacionEntrada(areas[noInfo], 'default', 1);
+
+            areas[noInfo].click(function(){
+                if(areas[noInfo].css('cursor') == 'pointer'){
+                    areas[noInfo].css('cursor', 'default');
+                    aplicacion.reproducirAudio(audiosSlides[noInfo], siguiente, 1);
+                    animacionEntrada(cuadros[noInfo], 'default', 1);
+                }
+            });
+        }
+
+        function siguiente(){
+            noSlide++;
+            if(noSlide < areas.length){
+                activarArea(noSlide);
+            }
+
+            if(noSlide == areas.length){
+                aplicacion.terminaPantalla();
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 21</title>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/estilos.css">
+
+    <!-- Librerias -->
+    <script src="../js/librerias/jquery.min.js"></script>
+    <script src="../js/librerias/gsap.min.js"></script>
+
+    <!-- Script de animaciones -->
+    <script src="../js/animaciones.js"></script>
+    <!-- Scripts posicionar elementos -->
+    <script src="../js/redimensionarElementos.js"></script>
+    <script src="../js/posicionar.js"></script>
+
+</head>
+<body class="pagina">
+
+    <img class="elementos" id="texto" src="../img/pagina21/texto.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="etiqueta" src="../img/pagina21/etiqueta.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="instruccion" src="../img/pagina21/instruccion.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro1" src="../img/pagina21/cuadro1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="cuadro2" src="../img/pagina21/cuadro2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="tel1" src="../img/pagina21/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos areasClick" id="area1" src="../img/pagina21/area1.png" data-posX="474" data-posY="208"/>
+    <img class="elementos areasClick" id="area2" src="../img/pagina21/area2.png" data-posX="474" data-posY="480"/>
+
+    <!-- Script de la página -->
+    <script>
+
+        // Variable----------------------------------------------------
+        let aplicacion = parent;
+        const texto = $('#texto');
+        const etiqueta = $('#etiqueta');
+        const instruccion = $('#instruccion');
+        const cuadro1 = $('#cuadro1');
+        const cuadro2 = $('#cuadro2');
+        const area1 = $('#area1');
+        const area2 = $('#area2');
+        const tel1 = $('#tel1');
+        const areasClick = $('.areasClick');
+
+        const cuadros = [
+            cuadro1,
+            cuadro2
+        ]
+
+        const areas = [
+            area1,
+            area2
+        ]
+
+        areasClick.css('cursor', 'pointer');
+
+        let noSlide = 0;
+
+        // Audios------------------------------------------------------
+        const audio = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3'),
+        ]
+
+        const audiosSlides = [
+            new Audio('../audios/audio0.mp3'),
+            new Audio('../audios/audio0.mp3')
+        ]
+
+        // Al cargarse la página
+        $(window).on("load", function(){
+            redimensionarElementos();
+            aplicacion.cargando(iniciarContenido);
+        });
+
+        function iniciarContenido(){
+            aplicacion.reproducirAudio(audio[0], verInstruccion, 1);
+            animacionEntrada(texto, 'izquierda-derecha', 1);
+        }
+
+        function verInstruccion(){
+            aplicacion.reproducirAudio(audio[1], actividad, 1);
+            animacionEntrada(instruccion, 'abajo-arriba', 1);
+        }
+
+        function actividad(){
+            animacionEntrada(tel1, 'default', 1);
+            activarArea(noSlide);
+        }
+
+        function activarArea(noInfo){
+            animacionEntrada(areas[noInfo], 'default', 1);
+
+            areas[noInfo].click(function(){
+                if(areas[noInfo].css('cursor') == 'pointer'){
+                    areas[noInfo].css('cursor', 'default');
+                    aplicacion.reproducirAudio(audiosSlides[noInfo], siguiente, 1);
+                    animacionEntrada(cuadros[noInfo], 'default', 1);
+                }
+            });
+        }
+
+        function siguiente(){
+            noSlide++;
+            if(noSlide < areas.length){
+                activarArea(noSlide);
+            }
+
+            if(noSlide == areas.length){
+                post()
+            }
+        }
+
+        function post(){
+            aplicacion.reproducirAudio(audio[2], final, 1);
+            animacionEntrada(etiqueta, 'derecha-izquierda', 1);
+        }
+
+        function final(){
+            aplicacion.terminaPantalla();
+        }
+
+    </script>
+</body>
+</html>
