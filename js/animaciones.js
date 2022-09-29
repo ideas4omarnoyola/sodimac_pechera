@@ -85,7 +85,7 @@ gsap.registerEffect({
     name: "parpadear",
     effect: (targets, config) => {
         return gsap.fromTo(targets, { 
-            opacity: .5
+            opacity: .4
         }, {
             duration:config.duration,
             delay: config.delay,

@@ -151,8 +151,10 @@
         const audio = [    
             new Audio('../audios/s_bien.mp3'),    
             new Audio('../audios/s_mal.mp3'),    
-            new Audio('../audios/Audio0.mp3'),    
-            new Audio('../audios/Audio0.mp3')    
+            new Audio('../audios/SODIMACPechera_28_1.mp3'),    
+            new Audio('../audios/SODIMACPechera_28_2.mp3'),    
+            new Audio('../audios/SODIMACPechera_28_3.mp3'),    
+            new Audio('../audios/SODIMACPechera_28_4.mp3'),    
         ]
 
         // Al cargarse la página
@@ -162,15 +164,19 @@
         });
 
         function iniciarContenido(){
-            simulacion1();
+            aplicacion.reproducirAudio(audio[2], indicaciones, 1);
             animacionEntrada(texto, 'izquierda-derecha', 1, 1);
+        }
+
+        function indicaciones(){
+            aplicacion.reproducirAudio(audio[3], simulacion1, 1);
         }
 
         // Simulacion 1-------------------------------------------------
 
         function simulacion1(){
-            animacionEntrada(sim1, 'default', 1, 3);
-            animacionEntrada(zona1_1, 'default', 1, 3);
+            animacionEntrada(sim1, 'default', 1, 1);
+            animacionEntrada(zona1_1, 'default', 1, 1);
         }
         
 
@@ -412,8 +418,12 @@
                 aplicacion.siguienteIntento();
                 retroB(promedio);
             }
+
+            if(intentos <= 2){
+                aplicacion.guardarCalificacion(promedio);
+            }
             
-            aplicacion.guardarCalificacion(promedio);
+            aplicacion.siguienteIntento();
         }
 
         function retroA(promedio){
@@ -427,7 +437,7 @@
                 'left': '538px'
             });
 
-            aplicacion.reproducirAudio(audio[2], avanzar, 1);
+            aplicacion.reproducirAudio(audio[4], avanzar, 1);
             animacionEntrada(retroBuena, 'default', 1, 1);
             animacionEntrada(calificacion, 'default', 1, 1);
         }
@@ -443,7 +453,7 @@
                 'left': '573px'
             });
 
-            aplicacion.reproducirAudio(audio[3], parpadeo, 1);
+            aplicacion.reproducirAudio(audio[5], parpadeo, 1);
             animacionEntrada(retroMala, 'default', 1, 1);
             animacionEntrada(calificacion, 'default', 1, 1);
         }
