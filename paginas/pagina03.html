@@ -36,7 +36,9 @@
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/audio0.mp3')    
+            new Audio('../audios/SODIMACPechera_03_1.mp3'),
+            new Audio('../audios/SODIMACPechera_03_2.mp3'),
+            new Audio('../audios/SODIMACPechera_03_3.mp3')
         ]
 
         // Al cargarse la página
@@ -46,11 +48,16 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], activarBoton, 1);
+            aplicacion.reproducirAudio(audio[0], segundoAudio, 1);
             animacionEntrada(texto, 'izquierda-derecha', 1, 1);
         }
 
+        function segundoAudio() {  
+            aplicacion.reproducirAudio(audio[1], activarBoton, 1);
+        }
+
         function activarBoton(){
+            aplicacion.reproducirAudio(audio[2], null, 0);
             parpadear(boton);
         }
 

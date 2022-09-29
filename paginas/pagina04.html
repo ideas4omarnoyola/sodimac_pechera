@@ -57,13 +57,14 @@
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/SODIMACPechera_04_1.mp3'),  
+            new Audio('../audios/SODIMACPechera_04_2.mp3'),  
         ]
 
         const audioCards = [
-            new Audio('../audios/audio0.mp3'),    
-            new Audio('../audios/audio0.mp3'),    
-            new Audio('../audios/audio0.mp3')  
+            new Audio('../audios/SODIMACPechera_04_3.mp3'),    
+            new Audio('../audios/SODIMACPechera_04_4.mp3'),    
+            new Audio('../audios/SODIMACPechera_04_5.mp3')  
         ]
 
         // Al cargarse la página
@@ -73,11 +74,15 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], actividad, 1);
+            aplicacion.reproducirAudio(audio[0], daClic, 1);
             animacionEntrada(texto, 'izquierda-derecha', 1, 1);
             animacionEntrada(carta1, 'abajo-arriba', 1, 2);
             animacionEntrada(carta2, 'abajo-arriba', 1, 2.5);
             animacionEntrada(carta3, 'abajo-arriba', 1, 3);
+        }
+
+        function daClic() {
+            aplicacion.reproducirAudio(audio[1], actividad);
         }
 
         function actividad(){

@@ -69,15 +69,16 @@
 
         // Audios------------------------------------------------------
         const audio = [
-            new Audio('../audios/audio0.mp3'),  
-            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/SODIMACPechera_05_1.mp3'),  
+            new Audio('../audios/SODIMACPechera_05_2.mp3'),  
+            new Audio('../audios/SODIMACPechera_05_7.mp3'),  
         ]
 
         const audioBoton = [
-            new Audio('../audios/audio0.mp3'),    
-            new Audio('../audios/audio0.mp3'),    
-            new Audio('../audios/audio0.mp3'),  
-            new Audio('../audios/audio0.mp3'),  
+            new Audio('../audios/SODIMACPechera_05_3.mp3'), 
+            new Audio('../audios/SODIMACPechera_05_4.mp3'), 
+            new Audio('../audios/SODIMACPechera_05_5.mp3'), 
+            new Audio('../audios/SODIMACPechera_05_6.mp3'), 
         ]
 
         // Al cargarse la página
@@ -87,12 +88,16 @@
         });
 
         function iniciarContenido(){
-            aplicacion.reproducirAudio(audio[0], actividad, 1);
+            aplicacion.reproducirAudio(audio[0], daClic, 1);
             animacionEntrada(texto, 'izquierda-derecha', 1, 1);
             animacionEntrada(uno, 'abajo-arriba', 1, 2);
             animacionEntrada(dos, 'abajo-arriba', 1, 2.5);
             animacionEntrada(tres, 'abajo-arriba', 1, 3);
             animacionEntrada(cuatro, 'abajo-arriba', 1, 3.5);
+        }
+
+        function daClic() {
+            aplicacion.reproducirAudio(audio[1], actividad);
         }
 
         function actividad(){
@@ -125,7 +130,7 @@
 
         botonPop.click(()=>{
             if(botonPop.css('cursor') == 'pointer'){
-                aplicacion.reproducirAudio(audio[1], cerrar, 1);
+                aplicacion.reproducirAudio(audio[2], cerrar, 1);
                 dejarParpadear(botonPop);
                 animacionEntrada(popUp, 'default', 1);
             }
