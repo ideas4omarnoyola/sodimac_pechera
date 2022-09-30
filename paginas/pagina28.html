@@ -82,7 +82,7 @@
         const zonas = $('.zonas');
         zonas.css({
             'cursor': 'pointer',
-            'background': '#30AB0280'
+            'background': 'transparent'
         });
         const sims = $('.sims');
         sims.css('cursor', 'pointer');
@@ -103,6 +103,7 @@
         const paloma2_3 = $('#paloma2_3');
         const tache2_1 = $('#tache2_1');
         const tache2_2 = $('#tache2_2');
+        const tache2_3 = $('#tache2_3');
         const zona2_1 = $('#zona2_1');
         const zona2_2 = $('#zona2_2');
         const zona2_3 = $('#zona2_3');
@@ -181,38 +182,48 @@
         
 
         sim1.click(function(){
-            audio[1].play();
+            if(sims.css('cursor') == 'pointer'){
+                audio[1].play();
 
-            if(zonaPantalla1 == 1){
-                animacionEntrada(tache1_1, 'default', 1);
-                animacionSalida(zona1_1, 'default', 1);
-                animacionEntrada(zona1_2, 'default', 1);
-            }
-            if(zonaPantalla1 == 2){
-                animacionEntrada(tache1_2, 'default', 1);
-                animacionSalida(zona1_2, 'default', 1);
-                salidaSim1();
-            }
+                if(zonaPantalla1 == 1){
+                    animacionEntrada(tache1_1, 'default', 1);
+                    animacionSalida(zona1_1, 'default', 1);
+                    animacionEntrada(zona1_2, 'default', 1);
+                }
+                if(zonaPantalla1 == 2){
+                    animacionEntrada(tache1_2, 'default', 1);
+                    animacionSalida(zona1_2, 'default', 1);
+                    salidaSim1();
+                }
 
-            zonaPantalla1++;
+                bloqueoTemporal();
+
+                zonaPantalla1++;
+            }
         });
 
         zona1_1.click(function(){
-            audio[0].play();
-            animacionSalida(zona1_1, 'default', .1);
-            zonaPantalla1++;
-            aciertos++;
-            animacionEntrada(paloma1_1, 'default', 1);
-            animacionEntrada(zona1_2, 'default', 1);
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona1_1, 'default', .1);
+                zonaPantalla1++;
+                aciertos++;
+                animacionEntrada(paloma1_1, 'default', 1);
+                animacionEntrada(zona1_2, 'default', 1);
+                bloqueoTemporal();   
+            }
         });
 
         zona1_2.click(function(){
-            audio[0].play();
-            animacionSalida(zona1_2, 'default', .1);
-            zonaPantalla1++;
-            aciertos++;
-            animacionEntrada(paloma1_2, 'default', 1);
-            salidaSim1();
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona1_2, 'default', .1);
+                zonaPantalla1++;
+                aciertos++;
+                animacionEntrada(paloma1_2, 'default', 1);
+                bloqueoTemporal();
+                salidaSim1();
+            }
         });
 
         
@@ -235,52 +246,65 @@
         
 
         sim2.click(function(){
-            audio[1].play();
+            if(sims.css('cursor') == 'pointer'){
+                audio[1].play();
 
-            if(zonaPantalla2 == 1){
-                animacionEntrada(tache2_1, 'default', 1);
-                animacionSalida(zona2_1, 'default', 1);
-                animacionEntrada(zona2_2, 'default', 1);
-            }
-            if(zonaPantalla2 == 2){
-                animacionEntrada(tache2_2, 'default', 1);
-                animacionSalida(zona2_2, 'default', 1);
-                animacionEntrada(zona2_3, 'default', 1);
-            }
-            if(zonaPantalla2 == 3){
-                animacionSalida(zona2_3, 'default', 1);
-                animacionEntrada(tache2_3, 'default', 1);
-                salidaSim2();
-            }
+                if(zonaPantalla2 == 1){
+                    animacionEntrada(tache2_1, 'default', 1);
+                    animacionSalida(zona2_1, 'default', 1);
+                    animacionEntrada(zona2_2, 'default', 1);
+                }
+                if(zonaPantalla2 == 2){
+                    animacionEntrada(tache2_2, 'default', 1);
+                    animacionSalida(zona2_2, 'default', 1);
+                    animacionEntrada(zona2_3, 'default', 1);
+                }
+                if(zonaPantalla2 == 3){
+                    animacionSalida(zona2_3, 'default', 1);
+                    animacionEntrada(tache2_3, 'default', 1);
+                    salidaSim2();
+                }
 
-            zonaPantalla2++;
+                bloqueoTemporal();
+                zonaPantalla2++;
+            }
+            
         });
 
         zona2_1.click(function(){
-            audio[0].play();
-            animacionSalida(zona2_1, 'default', .1);
-            zonaPantalla2++;
-            aciertos++;
-            animacionEntrada(paloma2_1, 'default', 1);
-            animacionEntrada(zona2_2, 'default', 1);
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona2_1, 'default', .1);
+                zonaPantalla2++;
+                aciertos++;
+                animacionEntrada(paloma2_1, 'default', 1);
+                animacionEntrada(zona2_2, 'default', 1);
+                bloqueoTemporal();
+            }
         });
 
         zona2_2.click(function(){
-            audio[0].play();
-            animacionSalida(zona2_2, 'default', .1);
-            zonaPantalla2++;
-            aciertos++;
-            animacionEntrada(paloma2_2, 'default', 1);
-            animacionEntrada(zona2_3, 'default', 1);
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona2_2, 'default', .1);
+                zonaPantalla2++;
+                aciertos++;
+                animacionEntrada(paloma2_2, 'default', 1);
+                animacionEntrada(zona2_3, 'default', 1);
+                bloqueoTemporal();   
+            }
         });
 
         zona2_3.click(function(){
-            audio[0].play();
-            animacionSalida(zona2_3, 'default', .1);
-            zonaPantalla2++;
-            aciertos++;
-            animacionEntrada(paloma2_3, 'default', 1);
-            salidaSim2();
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona2_3, 'default', .1);
+                zonaPantalla2++;
+                aciertos++;
+                animacionEntrada(paloma2_3, 'default', 1);
+                bloqueoTemporal();
+                salidaSim2();
+            }
         });
 
         function salidaSim2(){
@@ -303,66 +327,83 @@
         
 
         sim3.click(function(){
-            audio[1].play();
 
-            if(zonaPantalla3 == 1){
-                animacionEntrada(tache3_1, 'default', 1);
-                animacionSalida(zona3_1, 'default', 1);
-                animacionEntrada(zona3_2, 'default', 1);
-            }
-            if(zonaPantalla3 == 2){
-                animacionEntrada(tache3_2, 'default', 1);
-                animacionSalida(zona3_2, 'default', 1);
-                animacionEntrada(zona3_3, 'default', 1);
-            }
-            if(zonaPantalla3 == 3){
-                animacionEntrada(tache3_3, 'default', 1);
-                animacionSalida(zona3_3, 'default', 1);
-                animacionEntrada(zona3_4, 'default', 1);
-            }
-            if(zonaPantalla3 == 4){
-                animacionSalida(zona3_4, 'default', 1);
-                animacionEntrada(tache3_4, 'default', 1);
-                salidaSim3();
-            }
+            if(sims.css('cursor') == 'pointer'){
+                audio[1].play();
 
-            zonaPantalla3++;
+                if(zonaPantalla3 == 1){
+                    animacionEntrada(tache3_1, 'default', 1);
+                    animacionSalida(zona3_1, 'default', 1);
+                    animacionEntrada(zona3_2, 'default', 1);
+                }
+                if(zonaPantalla3 == 2){
+                    animacionEntrada(tache3_2, 'default', 1);
+                    animacionSalida(zona3_2, 'default', 1);
+                    animacionEntrada(zona3_3, 'default', 1);
+                }
+                if(zonaPantalla3 == 3){
+                    animacionEntrada(tache3_3, 'default', 1);
+                    animacionSalida(zona3_3, 'default', 1);
+                    animacionEntrada(zona3_4, 'default', 1);
+                }
+                if(zonaPantalla3 == 4){
+                    animacionSalida(zona3_4, 'default', 1);
+                    animacionEntrada(tache3_4, 'default', 1);
+                    salidaSim3();
+                }
+
+                bloqueoTemporal();
+                zonaPantalla3++;
+            }
         });
 
         zona3_1.click(function(){
-            audio[0].play();
-            animacionSalida(zona3_1, 'default', .1);
-            zonaPantalla3++;
-            aciertos++;
-            animacionEntrada(paloma3_1, 'default', 1);
-            animacionEntrada(zona3_2, 'default', 1);
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona3_1, 'default', .1);
+                zonaPantalla3++;
+                aciertos++;
+                animacionEntrada(paloma3_1, 'default', 1);
+                animacionEntrada(zona3_2, 'default', 1);
+                bloqueoTemporal();
+            }
+            
         });
 
         zona3_2.click(function(){
-            audio[0].play();
-            animacionSalida(zona3_2, 'default', .1);
-            zonaPantalla3++;
-            aciertos++;
-            animacionEntrada(paloma3_2, 'default', 1);
-            animacionEntrada(zona3_3, 'default', 1);
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona3_2, 'default', .1);
+                zonaPantalla3++;
+                aciertos++;
+                animacionEntrada(paloma3_2, 'default', 1);
+                animacionEntrada(zona3_3, 'default', 1);
+                bloqueoTemporal();
+            }
         });
 
         zona3_3.click(function(){
-            audio[0].play();
-            animacionSalida(zona3_3, 'default', .1);
-            zonaPantalla3++;
-            aciertos++;
-            animacionEntrada(paloma3_3, 'default', 1);
-            animacionEntrada(zona3_4, 'default', 1);
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona3_3, 'default', .1);
+                zonaPantalla3++;
+                aciertos++;
+                animacionEntrada(paloma3_3, 'default', 1);
+                animacionEntrada(zona3_4, 'default', 1);
+                bloqueoTemporal();
+            }
         });
 
         zona3_4.click(function(){
-            audio[0].play();
-            animacionSalida(zona3_4, 'default', .1);
-            zonaPantalla3++;
-            aciertos++;
-            animacionEntrada(paloma3_4, 'default', 1);
-            salidaSim3();
+            if(zonas.css('cursor') == 'pointer'){
+                audio[0].play();
+                animacionSalida(zona3_4, 'default', .1);
+                zonaPantalla3++;
+                aciertos++;
+                animacionEntrada(paloma3_4, 'default', 1);
+                bloqueoTemporal();
+                salidaSim3();
+            }
         });
 
         function salidaSim3(){
@@ -385,16 +426,21 @@
         }
 
         sim4.click(function(){
-            audio[1].play();
-            animacionEntrada(tache4_1, 'default', 1);
-            salidaSim4();
+                if(sims.css('cursor') == 'pointer'){
+                audio[1].play();
+                animacionEntrada(tache4_1, 'default', 1);
+                salidaSim4();
+                bloqueoTemporal();
+            }
         });
 
         zona4_1.click(function(){
-            animacionEntrada(paloma4_1, 'default', 1);
-            audio[0].play();
-            aciertos++;
-            salidaSim4();
+            if(zonas.css('cursor') == 'pointer'){
+                animacionEntrada(paloma4_1, 'default', 1);
+                audio[0].play();
+                aciertos++;
+                salidaSim4();
+            }
         });
 
         function salidaSim4(){
@@ -402,6 +448,7 @@
             animacionSalida(zona4_1, 'default', 1, .1);
             animacionSalida(paloma4_1, 'default', 1, 3);
             animacionSalida(tache4_1, 'default', 3);
+            bloqueoTemporal();
             retroEvaluacion();
         }
 
@@ -471,6 +518,16 @@
         reintentar.click(function(){
             aplicacion.recargarPagina();
         });
+
+        function bloqueoTemporal() {  
+            zonas.css('cursor', 'default');
+            sims.css('cursor', 'default');
+
+            setTimeout(()=>{
+                zonas.css('cursor', 'pointer');
+                sims.css('cursor', 'pointer');
+            }, 2000);
+        }
 
     </script>
 </body>
