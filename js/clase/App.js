@@ -29,11 +29,12 @@ function siguientePagina(){
             paginasVistas++;
         }
 
+        noPagina++;
+
         if(noPagina == totalPaginas - 1){
             statusCurso('completed');
         }
 
-        noPagina++;
         detenerAudios();
         actualizarTemario();
         desactivarBotonAdelante();
@@ -229,7 +230,7 @@ function verIntento(){
     return intentos;
 }
 
-function reiniciarInntentos(){
+function reiniciarIntentos(){
     intentos = 1;
 }
 

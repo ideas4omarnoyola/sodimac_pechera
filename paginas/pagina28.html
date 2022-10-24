@@ -456,21 +456,22 @@
         function retroEvaluacion(){
             const promedio = aciertos * 10;
 
+            
             const intentos = aplicacion.verIntento();
 
             if(promedio >= 80 && intentos <= 2){
                 retroA(promedio);
             }
             else{
-                aplicacion.siguienteIntento();
                 retroB(promedio);
             }
 
             if(intentos <= 2){
+                aplicacion.siguienteIntento();
                 aplicacion.guardarCalificacion(promedio);
             }
             
-            aplicacion.siguienteIntento();
+            
         }
 
         function retroA(promedio){
