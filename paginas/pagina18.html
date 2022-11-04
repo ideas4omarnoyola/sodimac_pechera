@@ -29,6 +29,9 @@
     <img class="elementos" id="tel1" src="../img/pagina18/tel1.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="tel2" src="../img/pagina18/tel2.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="tel3" src="../img/pagina18/tel3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse1" src="../img/pagina18/mouse1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse2" src="../img/pagina18/mouse2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse3" src="../img/pagina18/mouse3.png" data-posX="0" data-posY="0"/>
     <img class="elementos areasClick" id="area1" src="../img/pagina18/area1.png" data-posX="356" data-posY="444"/>
     <img class="elementos areasClick" id="area2" src="../img/pagina18/area2.png" data-posX="631" data-posY="215"/>
     <img class="elementos areasClick" id="area3" src="../img/pagina18/area3.png" data-posX="489" data-posY="210"/>
@@ -48,6 +51,9 @@
         const tel1 = $('#tel1');
         const tel2 = $('#tel2');
         const tel3 = $('#tel3');
+        const mouse1 = $('#mouse1');
+        const mouse2 = $('#mouse2');
+        const mouse3 = $('#mouse3');
         const areasClick = $('.areasClick');
 
         const cuadros = [
@@ -64,6 +70,11 @@
             area1,
             area2,
             area3
+        ]
+        const ratones = [
+            mouse1,
+            mouse2,
+            mouse3
         ]
 
         areasClick.css('cursor', 'pointer');
@@ -99,6 +110,8 @@
         function verInfo(noInfo){
             animacionEntrada(telefonos[noInfo], 'default', 1);
             animacionEntrada(areas[noInfo], 'default', 1);
+            animacionEntrada(ratones[noInfo], 'default', 1);
+
 
             areas[noInfo].click(function(){
                 aplicacion.reproducirAudio(audiosSlides[noInfo], siguiente, 1);
@@ -115,6 +128,8 @@
                 animacionSalida(telefonos[noSlide], 'default', 1);
                 animacionSalida(areas[noSlide], 'default', 1);
                 animacionSalida(cuadros[noSlide], 'default', 1);
+                animacionSalida(ratones[noSlide], 'default', 1);
+                animacionSalida(ratones[noSlide - 1], 'default', 1);
             }
 
             noSlide++;

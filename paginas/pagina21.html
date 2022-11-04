@@ -28,6 +28,8 @@
     <img class="elementos" id="cuadro1" src="../img/pagina21/cuadro1.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="cuadro2" src="../img/pagina21/cuadro2.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="tel1" src="../img/pagina21/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse1" src="../img/pagina21/mouse1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse2" src="../img/pagina21/mouse2.png" data-posX="0" data-posY="0"/>
     <img class="elementos areasClick" id="area1" src="../img/pagina21/area1.png" data-posX="474" data-posY="208"/>
     <img class="elementos areasClick" id="area2" src="../img/pagina21/area2.png" data-posX="474" data-posY="480"/>
 
@@ -45,6 +47,8 @@
         const area2 = $('#area2');
         const tel1 = $('#tel1');
         const areasClick = $('.areasClick');
+        const mouse1 = $('#mouse1');
+        const mouse2 = $('#mouse2');
 
         const cuadros = [
             cuadro1,
@@ -54,6 +58,11 @@
         const areas = [
             area1,
             area2
+        ]
+
+        const ratones = [
+            mouse1,
+            mouse2
         ]
 
         areasClick.css('cursor', 'pointer');
@@ -95,6 +104,7 @@
 
         function activarArea(noInfo){
             animacionEntrada(areas[noInfo], 'default', 1);
+            animacionEntrada(ratones[noInfo], 'default', 1);
 
             areas[noInfo].click(function(){
                 if(areas[noInfo].css('cursor') == 'pointer'){

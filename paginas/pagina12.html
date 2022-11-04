@@ -39,6 +39,14 @@
     <img class="elementos" id="cuadro6" src="../img/pagina12/cuadro6.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="cuadro7" src="../img/pagina12/cuadro7.png" data-posX="0" data-posY="0"/>
 
+    <img class="elementos" id="mouse1" src="../img/pagina12/mouse1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse2" src="../img/pagina12/mouse2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse3" src="../img/pagina12/mouse3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse4" src="../img/pagina12/mouse4.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse5" src="../img/pagina12/mouse5.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse6" src="../img/pagina12/mouse6.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse7" src="../img/pagina12/mouse7.png" data-posX="0" data-posY="0"/>
+
     <img class="elementos areas" id="area1" src="../img/pagina12/area1.png" data-posX="333" data-posY="278"/>
     <img class="elementos areas" id="area2" src="../img/pagina12/area2.png" data-posX="499" data-posY="479"/>
     <img class="elementos areas" id="area3" src="../img/pagina12/area3.png" data-posX="670" data-posY="212"/>
@@ -66,6 +74,13 @@
         const area5 = $('#area5');
         const area6 = $('#area6');
         const area7 = $('#area7');
+        const mouse1 = $('#mouse1');
+        const mouse2 = $('#mouse2');
+        const mouse3 = $('#mouse3');
+        const mouse4 = $('#mouse4');
+        const mouse5 = $('#mouse5');
+        const mouse6 = $('#mouse6');
+        const mouse7 = $('#mouse7');
         const cuadro1 = $('#cuadro1');
         const cuadro2 = $('#cuadro2');
         const cuadro3 = $('#cuadro3');
@@ -111,33 +126,40 @@
         function seleccionar1(){
             animacionEntrada(tel1, 'default', 1);
             animacionEntrada(area1, 'default', 1);
+            animacionEntrada(mouse1, 'default', 1);
         }
 
         function seleccionar2(){
             animacionEntrada(area2, 'default', 1);
+            animacionEntrada(mouse2, 'default', 1);
         }
 
         function seleccionar3(){
             animacionEntrada(tel2, 'default', 1);
             animacionEntrada(area3, 'default', 1);
+            animacionEntrada(mouse3, 'default', 1);
         }
 
         function seleccionar4(){
             animacionEntrada(area4, 'default', 1);
+            animacionEntrada(mouse4, 'default', 1);
         }
 
         function seleccionar5(){
             animacionEntrada(tel3, 'default', 1);
             animacionEntrada(area5, 'default', 1);
+            animacionEntrada(mouse5, 'default', 1);
         }
 
         function seleccionar6(){
             animacionEntrada(area6, 'default', 1);
+            animacionEntrada(mouse6, 'default', 1);
         }
 
         function seleccionar7(){
             animacionEntrada(tel4, 'default', 1);
             animacionEntrada(area7, 'default', 1);
+            animacionEntrada(mouse7, 'default', 1);
         }
 
         area1.click(function(){
@@ -181,6 +203,10 @@
             animacionSalida(cuadro2, 'default', 1);
             animacionSalida(cuadro3, 'default', 1);
             animacionSalida(cuadro4, 'default', 1);
+            animacionSalida(mouse1, 'default', 1);
+            animacionSalida(mouse2, 'default', 1);
+            animacionSalida(mouse3, 'default', 1);
+            animacionSalida(mouse4, 'default', 1);
             animacionSalida(area1, 'default', 1);
             animacionSalida(area2, 'default', 1);
             animacionSalida(area3, 'default', 1);

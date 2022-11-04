@@ -29,6 +29,10 @@
     <img class="elementos" id="cuadro3" src="../img/pagina20/cuadro3.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="cuadro4" src="../img/pagina20/cuadro4.png" data-posX="0" data-posY="0"/>
     <img class="elementos" id="tel1" src="../img/pagina20/tel1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse1" src="../img/pagina20/mouse1.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse2" src="../img/pagina20/mouse2.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse3" src="../img/pagina20/mouse3.png" data-posX="0" data-posY="0"/>
+    <img class="elementos" id="mouse4" src="../img/pagina20/mouse4.png" data-posX="0" data-posY="0"/>
     <img class="elementos areasClick" id="area1" src="../img/pagina20/area1.png" data-posX="474" data-posY="210"/>
     <img class="elementos areasClick" id="area2" src="../img/pagina20/area2.png" data-posX="474" data-posY="276"/>
     <img class="elementos areasClick" id="area3" src="../img/pagina20/area3.png" data-posX="474" data-posY="397"/>
@@ -50,6 +54,10 @@
         const area3 = $('#area3');
         const area4 = $('#area4');
         const tel1 = $('#tel1');
+        const mouse1 = $('#mouse1');
+        const mouse2 = $('#mouse2');
+        const mouse3 = $('#mouse3');
+        const mouse4 = $('#mouse4');
         const areasClick = $('.areasClick');
 
         const cuadros = [
@@ -64,6 +72,13 @@
             area2,
             area3,
             area4
+        ]
+
+        const ratones = [
+            mouse1,
+            mouse2,
+            mouse3, 
+            mouse4
         ]
 
         areasClick.css('cursor', 'pointer');
@@ -105,6 +120,7 @@
 
         function activarArea(noInfo){
             animacionEntrada(areas[noInfo], 'default', 1);
+            animacionEntrada(ratones[noInfo], 'default', 1);
 
             areas[noInfo].click(function(){
                 if(areas[noInfo].css('cursor') == 'pointer'){
